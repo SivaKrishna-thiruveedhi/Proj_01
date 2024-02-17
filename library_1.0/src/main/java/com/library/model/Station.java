@@ -12,10 +12,13 @@ public class Station {
 	@Column(name = "ss_code")
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int stationCode;
+	private int stationNumber;
 	
 	@Column(name = "station_name")
 	private String stationName;
+	
+	@Column(name = "station_code")
+	private String stationCode;
 	
 	@Column(name = "is_avvailable")
 	private int is_avvailable;
@@ -34,26 +37,21 @@ public class Station {
 		super();
 	}
 
-	public Station(int stationCode, String stationName, int is_avvailable, String createdby, String modifiedby,
-			String last_modification) {
-		super();
-		this.stationCode = stationCode;
-		this.stationName = stationName;
-		this.is_avvailable = is_avvailable;
-		this.createdby = createdby;
-		this.modifiedby = modifiedby;
-		this.last_modification = last_modification;
+	public int getStationNumber() {
+		return stationNumber;
 	}
 
-	public int getStationCode() {
+	public void setStationNumber(int stationNumber) {
+		this.stationNumber = stationNumber;
+	}
+
+	public String getStationCode() {
 		return stationCode;
 	}
 
-
-	public void setStationCode(int stationCode) {
+	public void setStationCode(String stationCode) {
 		this.stationCode = stationCode;
 	}
-
 
 	public String getStationName() {
 		return stationName;
