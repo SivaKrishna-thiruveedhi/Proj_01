@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.library.model.Station;
 import com.library.model.Train;
 import com.library.service.MainService;
 import com.library.service.user.LoginService;
@@ -31,7 +32,7 @@ public class Controller {
 	MainService service;
 	
 	@GetMapping("/trainSearch")
-	public List<Train> trainSearch() {
+	public List<Station> trainSearch() {
 		System.out.println("TraiSearching.................");
 		return service.trianSearchList();
 	}

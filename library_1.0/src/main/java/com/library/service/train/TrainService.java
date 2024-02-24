@@ -1,10 +1,12 @@
 package com.library.service.train;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.library.model.Station;
 import com.library.model.Train;
 import com.library.repo.user.StationRepository;
 import com.library.repo.user.TrainRepository;
@@ -18,8 +20,56 @@ public class TrainService {
 	@Autowired
 	StationRepository stationRepo;
 	
-	public List<Train> getTrainList() {
-		return trainRepo.findAll();
+	public List<Station> getTrainList() {
+		
+		ArrayList trainDetailList = (ArrayList) trainRepo.findAll();
+
+		return stationRepo.findAll();
 	}
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

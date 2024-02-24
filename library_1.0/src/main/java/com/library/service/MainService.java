@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.library.model.Station;
 import com.library.model.Train;
 import com.library.service.train.TrainService;
 import com.library.service.user.LoginService;
@@ -19,8 +20,53 @@ public class MainService {
 	@Autowired
 	LoginService loginService;
 	
-	public List<Train> trianSearchList() {
+	public List<Station> trianSearchList() {
 		return trainService.getTrainList();
 	}
 	
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

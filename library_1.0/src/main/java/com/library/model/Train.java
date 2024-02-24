@@ -17,11 +17,14 @@ public class Train {
 	@Column(name = "train_name")
 	private String trainName;
 	
-	@Column(name = "ss_code")
-	private int startingStation;
+	@Column(name = "startingStation")
+	private String startingStationName;
 	
-	@Column(name = "es_code")
-	private int endStation;
+	@Column(name = "endStation")
+	private String endStationName;
+	
+	@Column(name = "stationCode")
+	private String stationCode;
 	
 	@Column(name = "bording_time")
 	private String boardingTime;
@@ -62,22 +65,6 @@ public class Train {
 
 	public void setTrainName(String trainName) {
 		this.trainName = trainName;
-	}
-
-	public int getStartingStation() {
-		return startingStation;
-	}
-
-	public void setStartingStation(int startingStation) {
-		this.startingStation = startingStation;
-	}
-
-	public int getEndStation() {
-		return endStation;
-	}
-
-	public void setEndStation(int endStation) {
-		this.endStation = endStation;
 	}
 
 	public String getBoardingTime() {
@@ -134,6 +121,30 @@ public class Train {
 
 	public void setLast_modification(String last_modification) {
 		this.last_modification = last_modification;
+	}
+
+	public String getStartingStationName() {
+		return startingStationName;
+	}
+
+	public void setStartingStationName(String startingStationName) {
+		this.startingStationName = startingStationName;
+	}
+
+	public String getEndStationName() {
+		return endStationName;
+	}
+
+	public void setEndStationName(String endStationName) {
+		this.endStationName = endStationName;
+	}
+
+	public String getStationCode() {
+		return stationCode;
+	}
+
+	public void setStationCode(String stationCode) {
+		this.stationCode = stationCode;
 	}
 	
 	
