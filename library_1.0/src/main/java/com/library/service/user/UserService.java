@@ -14,19 +14,19 @@ import com.library.model.User;
 import com.library.repo.user.UserRepository;
 
 @Service
-public class LoginService {
+public class UserService {
 
 	@Autowired
 	UserRepository userRepo;
 
-	public boolean checkUserExistence(HttpServletRequest request, HttpServletResponse response) {
+	public boolean checkUserExistence(User user) {
 
 		boolean result = false;
-		System.out.println("***********LoginService***********"+ request.getParameter("email"));
-		String gmail = request.getParameter("email");
-		Optional<User> user = userRepo.findByUgmail(gmail);
-		if (!(user.isEmpty())) {
-			System.out.println("true..."+user);
+		System.out.println("***********LoginService***********"+ user.getEmail());
+		String gmail = user.getEmail();
+		Optional<User> user1 = userRepo.findByEmail(gmail);
+		if (!(user1.isEmpty())) {
+			System.out.println("true..."+user1);
 			return true;
 		} else {
 			System.out.println("false...");
@@ -34,17 +34,15 @@ public class LoginService {
 		}
 	}
 	
-	public boolean addUser(HttpServletRequest req, HttpServletResponse response) {
+	public String addUser(User user) {
 		boolean result = false;
 		boolean userExist = false;
-		System.out.println("***********RegisterService***********"+ req.getParameter("email"));
+		System.out.println("***********RegisterService***********"+ user.getEmail());
 		
-		if (checkUserExistence(req, response)) {
+		if (checkUserExistence(user)) {
 			userExist = true;
-		}
 		
-		if (!userExist) {
-			
+		}else {
 			// Get the current date and time
 	        LocalDateTime currentDateTime = LocalDateTime.now();
 
@@ -54,19 +52,27 @@ public class LoginService {
 	        // Format the current date and time as a string
 	        String formattedDateTime = currentDateTime.format(formatter);
 			
-			User user = new User();
-			user.setUname(req.getParameter("username"));
-			user.setUgmail(req.getParameter("email"));
-			user.setPassword(req.getParameter("password"));
-			user.setUage(Integer.parseInt(req.getParameter("age")));
-			user.setIs_avvailable(1);
-			user.setCreatedby("SK");
-			user.setModifiedby("SK");
-			user.setLast_modification(formattedDateTime);
+			User newUser = new User();
+			newUser.setName(user.getName());
+			newUser.setEmail(user.getEmail());
+			newUser.setPassword(user.getPassword());
+			newUser.setAge(user.getAge());
+			newUser.setIs_avvailable(1);
+			newUser.setCreatedby("SK");
+			newUser.setModifiedby("SK");
+			newUser.setLast_modification(formattedDateTime);
+			newUser.setIsAdmin("N");
+			
+			userRepo.save(newUser);
 		}
 		
-		return result;
+		if(userExist) {
+			return "User Already Exists With Same Email-Id";
+		}else
+			return "User Saved Succesfully";
 	}
+
+	
 
 }
 

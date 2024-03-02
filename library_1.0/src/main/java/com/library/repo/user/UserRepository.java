@@ -10,5 +10,5 @@ import com.library.model.User;
 
 public interface UserRepository extends JpaRepository<User, Integer> {
 	
-	public Optional<User> findByUgmail(String ugmail);
+	public Optional<User> findByEmail(String email);
 }

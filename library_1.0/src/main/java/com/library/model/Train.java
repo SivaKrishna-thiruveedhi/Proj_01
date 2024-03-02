@@ -17,13 +17,13 @@ public class Train {
 	@Column(name = "train_name")
 	private String trainName;
 	
-	@Column(name = "startingStation")
+	@Column(name = "starting_station")
 	private String startingStationName;
 	
-	@Column(name = "endStation")
+	@Column(name = "end_station")
 	private String endStationName;
 	
-	@Column(name = "stationCode")
+	@Column(name = "station_code")
 	private String stationCode;
 	
 	@Column(name = "bording_time")

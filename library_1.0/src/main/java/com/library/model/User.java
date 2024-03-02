@@ -15,19 +15,22 @@ public class User {
 	private int Id;
 	
 	@Column(name = "usr_name")
-	private String uname;
+	private String name;
 	
 	@Column(name = "user_gmail")
-	private String ugmail;
+	private String email;
 	
 	@Column(name = "password")
 	private String password;
 	
 	@Column(name = "usr_age")
-	private int uage;
+	private int age;
 	
 	@Column(name = "is_avvailable")
 	private int is_avvailable;
+	
+	@Column(name = "admin")
+	private String isAdmin;
 	
 	@Column(name = "createdby")
 	private String createdby;
@@ -42,20 +45,6 @@ public class User {
 		super();
 	}
 
-	public User(int id, String uname, String ugmail, String password, int uage, int is_avvailable, String createdby,
-			String modifiedby, String last_modification) {
-		super();
-		Id = id;
-		this.uname = uname;
-		this.ugmail = ugmail;
-		this.password = password;
-		this.uage = uage;
-		this.is_avvailable = is_avvailable;
-		this.createdby = createdby;
-		this.modifiedby = modifiedby;
-		this.last_modification = last_modification;
-	}
-
 	public int getId() {
 		return Id;
 	}
@@ -64,20 +53,32 @@ public class User {
 		Id = id;
 	}
 
-	public String getUname() {
-		return uname;
+	public String getName() {
+		return name;
 	}
 
-	public void setUname(String uname) {
-		this.uname = uname;
+	public void setName(String name) {
+		this.name = name;
 	}
 
-	public String getUgmail() {
-		return ugmail;
+	public String getEmail() {
+		return email;
 	}
 
-	public void setUgmail(String ugmail) {
-		this.ugmail = ugmail;
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public int getAge() {
+		return age;
+	}
+
+	public void setAge(int age) {
+		this.age = age;
+	}
+
+	public int getIs_avvailable() {
+		return is_avvailable;
 	}
 
 	public String getPassword() {
@@ -86,18 +87,6 @@ public class User {
 
 	public void setPassword(String password) {
 		this.password = password;
-	}
-
-	public int getUage() {
-		return uage;
-	}
-
-	public void setUage(int uage) {
-		this.uage = uage;
-	}
-
-	public int getIs_avvailable() {
-		return is_avvailable;
 	}
 
 	public void setIs_avvailable(int is_avvailable) {
@@ -128,7 +117,14 @@ public class User {
 		this.last_modification = last_modification;
 	}
 
-		
+	public String getIsAdmin() {
+		return isAdmin;
+	}
+
+	public void setIsAdmin(String isAdmin) {
+		this.isAdmin = isAdmin;
+	}
+
 }
 
 

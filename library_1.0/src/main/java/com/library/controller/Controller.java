@@ -2,22 +2,23 @@ package com.library.controller;
 
 import java.util.List;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.ui.ModelMap;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.servlet.ModelAndView;
 
+import com.library.model.Message;
 import com.library.model.Station;
 import com.library.model.Train;
+import com.library.model.User;
 import com.library.service.MainService;
-import com.library.service.user.LoginService;
+import com.library.service.user.UserService;
 
 
 @CrossOrigin(origins = "http://localhost:4200")
@@ -26,7 +27,7 @@ import com.library.service.user.LoginService;
 public class Controller {
 	
 	@Autowired
-	LoginService logService;
+	UserService logService;
 	
 	@Autowired
 	MainService service;
@@ -37,7 +38,20 @@ public class Controller {
 		return service.trianSearchList();
 	}
 	
+	@GetMapping("/trainSearch/{stationName}")
+	public List<Train> trainSearchByStationName(@PathVariable String stationName) {
+		System.out.println("Train Search By StationName............");
+		return service.trainSearchByStationName(stationName);
+	}
 	
+	@PostMapping("/addUser")
+	public Message registerUser(@RequestBody User user ) {
+		System.out.println("***************Register***************");
+		System.out.println(user.getName());
+		Message msg = new Message();
+		msg.setMsg(service.getRegister(user));
+		return msg;
+	}
 	
 	
 	

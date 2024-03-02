@@ -27,6 +27,10 @@ public class TrainService {
 		return stationRepo.findAll();
 	}
 
+	public List<Train> getTrainByName(String stationName) {
+		return trainRepo.findByStartingStationName(stationName);
+	}
+
 }
 
 
