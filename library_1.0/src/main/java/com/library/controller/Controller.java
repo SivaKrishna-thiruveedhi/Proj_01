@@ -1,6 +1,7 @@
 package com.library.controller;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -53,6 +54,11 @@ public class Controller {
 		return msg;
 	}
 	
+	@PostMapping("/getUser")
+	public Optional<User> getLogin(@RequestBody User user ) {
+		System.out.println("***************Login***************");
+		return service.getLogin(user);
+	}
 	
 	
 	

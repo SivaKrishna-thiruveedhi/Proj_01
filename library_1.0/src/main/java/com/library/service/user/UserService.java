@@ -45,10 +45,8 @@ public class UserService {
 		}else {
 			// Get the current date and time
 	        LocalDateTime currentDateTime = LocalDateTime.now();
-
 	        // Define a custom date and time format
 	        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
-
 	        // Format the current date and time as a string
 	        String formattedDateTime = currentDateTime.format(formatter);
 			
@@ -72,8 +70,22 @@ public class UserService {
 			return "User Saved Succesfully";
 	}
 
-	
+	public Optional<User> getLogin(User user) {
+		boolean result = false;
+		Optional<User> user1 = java.util.Optional.empty();
+		if (checkUserExistence(user)) {
+			result = true;
+		}		
+		if (result) {
+			user1 = userRepo.findByEmail(user.getEmail());
+			if ((user.getPassword().toString()).equals(user1.get().getPassword()) && user1.get().getIs_avvailable() == 1 ) {
+				return user1;
+			}
+		}
+		return null;
+	}
 
+	
 }
 
 

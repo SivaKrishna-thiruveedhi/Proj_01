@@ -1,6 +1,7 @@
 package com.library.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -32,6 +33,10 @@ public class MainService {
 	public String getRegister(User user) {
 		return userService.addUser(user);
 		
+	}
+
+	public Optional<User> getLogin(User user) {
+		return userService.getLogin(user);
 	}
 	
 }
