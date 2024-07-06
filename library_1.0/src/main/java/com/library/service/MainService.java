@@ -5,7 +5,9 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestBody;
 
+import com.library.model.Message;
 import com.library.model.Station;
 import com.library.model.Train;
 import com.library.model.User;
@@ -37,6 +39,10 @@ public class MainService {
 
 	public Optional<User> getLogin(User user) {
 		return userService.getLogin(user);
+	}
+	
+	public String addTrain(Train train ) {
+		return trainService.addTrain(train);
 	}
 	
 }

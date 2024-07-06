@@ -31,6 +31,9 @@ public class Station {
 	
 	@Column(name = "last_modification")
 	private String last_modification;
+	
+	@Column(name = "station_code")
+	private String code;
 
 
 	public Station() {
@@ -93,6 +96,15 @@ public class Station {
 	public void setLast_modification(String last_modification) {
 		this.last_modification = last_modification;
 	}
+
+	public String getCode() {
+		return code;
+	}
+
+	public void setCode(String code) {
+		this.code = code;
+	}
+	
 	
 	
 

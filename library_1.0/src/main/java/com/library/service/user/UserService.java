@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.library.config.CurrentTime;
 import com.library.model.User;
 import com.library.repo.user.UserRepository;
 
@@ -18,6 +19,9 @@ public class UserService {
 
 	@Autowired
 	UserRepository userRepo;
+	
+	@Autowired
+	CurrentTime currentTime;
 
 	public boolean checkUserExistence(User user) {
 
@@ -35,7 +39,6 @@ public class UserService {
 	}
 	
 	public String addUser(User user) {
-		boolean result = false;
 		boolean userExist = false;
 		System.out.println("***********RegisterService***********"+ user.getEmail());
 		
@@ -43,12 +46,8 @@ public class UserService {
 			userExist = true;
 		
 		}else {
-			// Get the current date and time
-	        LocalDateTime currentDateTime = LocalDateTime.now();
-	        // Define a custom date and time format
-	        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
-	        // Format the current date and time as a string
-	        String formattedDateTime = currentDateTime.format(formatter);
+			
+			String formattedDateTime = currentTime.presentTime();
 			
 			User newUser = new User();
 			newUser.setName(user.getName());
